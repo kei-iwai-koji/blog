@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
   devise_for :users
-  get 'usagi' => 'blog#index'
+  root 'blogs#index'
+  resources :blogs do
+    resources :comments, only: [:create]
+  end
+  resources :user, only: [:show]
 end
