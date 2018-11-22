@@ -18,12 +18,12 @@
             <span><%= current_user.name %>
               <ul class="user__info">
                 <li>
-                  <a href="/users/<%= current_user.id %>">投稿するぅ？</a>
+                  <a href="/users/<%= current_user.id %>">マイページ</a>
                   <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
                 </li>
               </ul>
             </span>
-            <a class="post" href="/blogs/new">投稿する</a>
+            <a class="post" href="/articles/new">投稿する</a>
           </div>
         <% else %>
           <div class="grid-6">

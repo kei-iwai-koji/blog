@@ -1,0 +1,20 @@
+    <% @articles.each do |article| %>
+    <div class="body">
+    <h2 class="title">
+      ●<%= article.title %><br>
+    </h2>
+    <p class="text">
+      <%= article.text %><br>
+    </p>
+    <%= link_to '詳細', "/articles/#{article.id}", method: :get %>
+    <% if user_signed_in? && current_user.id == article.user.id %>
+      <li>
+        <%= link_to '編集', "/blogs/#{article.id}/edit", method: :get %>
+      </li>
+      <li>
+        <%= link_to '削除', "/blogs/#{article.id}", method: :delete %>
+      </li>
+    <% end %>
+    </div>
+    <hr>
+    <% end %>

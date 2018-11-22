@@ -2,10 +2,10 @@
     <% if user_signed_in? && current_user.id == @article.user_id %>
       <ul class="more_list">
         <li>
-          <%= link_to '編集', "/blogs/#{@article.id}/edit", method: :get %>
+          <%= link_to '編集', "/articles/#{@article.id}/edit", method: :get %>
         </li>
         <li>
-          <%= link_to '削除', "/blogs/#{@article.id}", method: :delete %>
+          <%= link_to '削除', "/articles/#{@article.id}", method: :delete %>
         </li>
       </ul>
     </div>
@@ -19,19 +19,20 @@
   </div>
   <div class="container">
     <!-- ここからフォーム -->
-    <% if user_signed_in? %>
-      <%= form_tag("/blogs/#{@article.id}/comments", method: :post) do %>
+
+      <%= form_tag("/articles/#{@article.id}/comments", method: :post) do %>
+        <input placeholder="なまえ" type="string" name="name">
         <textarea name="text" cols="30" placeholder="コメントする" rows="2"></textarea>
-        <input type="submit" value="SEEEENT">
+        <input type="submit" value="しんだ">
       <% end %>
-    <% end %>
+
     <div class="comments">
       <h4>コメント一蘭</h4>
       <% if @comments %>
         <% @comments.each do |comment| %>
           <p>
-            <%= comment.name %>
-            <%= comment.text %>
+            コメントした人<%= comment.name %>
+            コメントの中身<%= comment.text %>
           </p>
         <% end %>
       <% end %>

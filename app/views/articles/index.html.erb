@@ -7,13 +7,13 @@
     <p class="text">
       <%= article.text %><br>
     </p>
-    <%= link_to '詳細', "/blogs/#{article.id}", method: :get %>
+    <%= link_to '詳細', "/articles/#{article.id}", method: :get %>
     <% if user_signed_in? && current_user.id == article.user.id %>
       <li>
-        <%= link_to '編集', "/blogs/#{article.id}/edit", method: :get %>
+        <%= link_to '編集', "/articles/#{article.id}/edit", method: :get %>
       </li>
       <li>
-        <%= link_to '削除', "/blogs/#{article.id}", method: :delete %>
+        <%= link_to '削除', "/articles/#{article.id}", method: :delete %>
       </li>
     <% end %>
     </div>
