@@ -7,32 +7,39 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.js"
+      integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+      crossorigin="anonymous"></script>
+
   </head>
 
   <body>
-    <div class="header">
-      <div class="header-box">
-        <h1 class="title"><a href="/">BLOG</a></h1>
-        <% if user_signed_in? %>
-          <div class="user_nav grid-6">
-            <span><%= current_user.name %>
-              <ul class="user__info">
-                <li>
-                  <a href="/users/<%= current_user.id %>">マイページ</a>
-                  <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-                </li>
-              </ul>
-            </span>
-            <a class="post" href="/articles/new">投稿する</a>
-          </div>
-        <% else %>
-          <div class="grid-6">
-            <%= link_to "ログイン", new_user_session_path, class: 'post' %>
-            <%= link_to "新規登録", new_user_registration_path, class: 'post' %>
-          </div>
-        <% end %>
-      </div>
+
+  <nav class="red darken-2">
+    <div class="nav-wrapper">
+      <a href="/" class="brand-logo">$さいこうに　ださい　ぶろぐ∫</a>
+      <% if user_signed_in? %>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <li><a href="/users/<%= current_user.id %>">マイページ</a></li>
+          <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
+          <li><a href="/users/<%= current_user.id %>">投稿する</a></li>
+        </ul>
+      <% else %>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <li><%= link_to "ログイン", new_user_session_path, class: 'post' %></li>
+          <li><%= link_to "新規登録", new_user_registration_path, class: 'post' %></li>
+        </ul>
+      <% end %>
     </div>
+  </nav>
 
     <div class="contents">
       <div class="content-box">
@@ -40,5 +47,36 @@
       </div>
     </div>
 
+
+  <footer class="page-footer deep-purple ">
+    <div class="container">
+      <div class="row">
+        <div class="col l6 s12">
+          <h5 class="white-text">Mow Tsuka Rater</h5>
+          <p class="grey-text text-lighten-4">You sleep and can get up.<br>But, you must walk to go to the station.</p>
+        </div>
+        <div class="col l4 offset-l2 s12">
+          <h5 class="white-text">Links</h5>
+          <ul>
+            <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
+            <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
+            <li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
+            <li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container">
+      © 2014 Copyright Text
+      <a class="grey-text text-lighten-4 right" href="/">No Links</a>
+      </div>
+    </div>
+  </footer>
+
+
+
   </body>
+
+
 </html>
