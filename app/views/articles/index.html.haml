@@ -1,0 +1,14 @@
+- @articles.each do |article|
+  .body
+    %h2.title
+      タイトル:#{article.title}
+      %br/
+    %p.text
+      = article.text
+      %br/
+    = link_to '詳細', "/articles/#{article.id}", method: :get
+    - if user_signed_in? && current_user.id == article.user.id
+      = link_to '編集', "/articles/#{article.id}/edit", method: :get
+      = link_to '削除', "/articles/#{article.id}", method: :delete
+  %hr/
+format_align_justify
