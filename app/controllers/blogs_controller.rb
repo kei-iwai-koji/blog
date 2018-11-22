@@ -2,7 +2,7 @@ class BlogsController < ApplicationController
   before_action :move_to_index, except: [:index, :show]
 
   def index
-    @article = Article.includes(:user)
+    @articles = Article.includes(:user)
   end
 
   def new

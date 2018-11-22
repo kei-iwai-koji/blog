@@ -1,6 +1,12 @@
-<div class="contents row" >
-  <% @arti.each do |tweet| %>
-    <%= render partial: "tweets", locals: { tweet: tweet } %>
-  <% end %>
-  <%= paginate(@tweets) %>
-</div>
+
+    <% @articles.each do |article| %>
+    <div class="body">
+    <h2 class="title">
+      ●<%= article.title %><br>
+    </h2>
+    <p class="text">
+      <%= article.text %><br>
+    </p>
+    </div>
+    <hr>
+    <% end %>
