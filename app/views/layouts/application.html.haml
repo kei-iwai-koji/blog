@@ -1,0 +1,57 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title Blog
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    / Compiled and minified CSS
+    %link{:href => "https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css", :rel => "stylesheet"}/
+    / Compiled and minified JavaScript
+    %script{:src => "https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"}
+    %script{:crossorigin => "anonymous", :integrity => "sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=", :src => "https://code.jquery.com/jquery-3.3.1.js"}
+    %link{:href => "https://fonts.googleapis.com/icon?family=Material+Icons", :rel => "stylesheet"}/
+  %body
+    %nav.red.darken-2
+      .nav-wrapper
+        %a.brand-logo{:href => "/"}$さいこうに　ださい　ぶろぐ∫
+        - if user_signed_in?
+          %ul#nav-mobile.right.hide-on-med-and-down
+            %li
+              %a{:href => "/users/#{current_user.id}"} マイページ
+            %li= link_to "ログアウト", destroy_user_session_path, method: :delete
+            %li
+              %a.post{:href => "/articles/new"} 投稿する
+        - else
+          %ul#nav-mobile.right.hide-on-med-and-down
+            %li= link_to "ログイン", new_user_session_path, class: 'post'
+            %li= link_to "新規登録", new_user_registration_path, class: 'post'
+    .contents
+      .content-box
+        = yield
+    %footer.page-footer.purple.accent-3
+      .container
+        .row
+          .col.l6.s12
+            %h5.white-text Mow Tsuka Rater
+            %p.grey-text.text-lighten-4
+              You sleep and can get up.
+              %br>/
+              But, you must walk to go to the station.
+          .col.l4.offset-l2.s12
+            %h5.white-text Links
+            %ul
+              %li
+                %a.grey-text.text-lighten-3{:href => "#!"} Link 1
+              %li
+                %a.grey-text.text-lighten-3{:href => "#!"} Link 2
+              %li
+                %a.grey-text.text-lighten-3{:href => "#!"} Link 3
+              %li
+                %a.grey-text.text-lighten-3{:href => "#!"} Link 4
+      .footer-copyright
+        .container
+          © 2014 Copyright Text
+          %a.grey-text.text-lighten-4.right{:href => "/"} No Links

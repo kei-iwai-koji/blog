@@ -1,15 +1,16 @@
-class BlogsController < ApplicationController
+class ArticlesController < ApplicationController
   before_action :move_to_index, except: [:index, :show]
 
   def index
-    @article = Article.includes(:user)
+    @articles = Article.includes(:user).order("created_at DESC")
   end
 
   def new
+    @article = Article.new
   end
 
   def create
-    Article.create(title: article_params[:title],article: article_params[:article])
+    Article.create(article_params)
   end
 
   def destroy
@@ -30,12 +31,13 @@ class BlogsController < ApplicationController
 
   def show
     @article = Article.find(params[:id])
-    @comments = @article.comments.includes(:user)
+    @comments = @article.comments
+    @comment = Comment.new
   end
 
   private
   def article_params
-    paramas_permit(:title, :article)
+    params.require(:article).permit(:id, :title, :text).merge(user_id: current_user.id)
   end
 
   def move_to_index

@@ -1,11 +1,11 @@
 class CommentsController < ApplicationController
   def create
-    @comment = Comment.create(name: comment_params[:name], text: comment_params[:text])
-    redirect_to "/blog"
+    @comment = Comment.create(name: comment_params[:name], text: comment_params[:text], article_id: comment_params[:article_id])
+    redirect_to "/articles/#{@comment.article.id}"
   end
 
   private
   def comment_params
-    paramas_permit(:name, :text)
+    params.permit(:name, :text, :article_id)
   end
 end

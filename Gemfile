@@ -68,3 +68,6 @@ gem 'compass-rails','3.1.0'
 gem 'sprockets', '3.7.2'
 gem 'devise'
 
+  gem 'haml-rails'
+  gem 'erb2haml'
+
