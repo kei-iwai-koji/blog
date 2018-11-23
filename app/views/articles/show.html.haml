@@ -1,23 +1,29 @@
-- if user_signed_in? && current_user.id == @article.user_id
-  %ul.more_list
-    %li
-      = link_to '編集', "/articles/#{@article.id}/edit", method: :get
-    %li
-      = link_to '削除', "/articles/#{@article.id}", method: :delete
-= simple_format(@article.text)
-%span.name
-  %span 投稿者
-  = @article.user.name
+.article
+  .article__title
+    = simple_format(@article.title)
+  .article__text
+    = simple_format(@article.text)
+  %span.name
+    %span 投稿者
+    = @article.user.name
+  - if user_signed_in? && current_user.id == @article.user_id
+    .menu
+      .edit
+        = link_to "/articles/#{@article.id}/edit", method: :get do
+          %i.medium.material-icons border_color
+      .delete
+        = link_to "/articles/#{@article.id}", method: :delete do
+          %i.medium.material-icons bug_report
+
 .container
   / ここからフォーム
   = form_tag("/articles/#{@article.id}/comments", method: :post) do
     %input{:name => "name", :placeholder => "なまえ", :type => "string"}/
     %textarea{:cols => "30", :name => "text", :placeholder => "コメントする", :rows => "2"}
-    %input{:type => "submit", :value => "しんだ"}/
+    %input{:type => "submit", :value => "喧嘩売る"}/
   .comments
     %h4 コメント一蘭
     - if @comments
       - @comments.each do |comment|
-        %p
-          コメントした人#{comment.name}
-          コメントの中身#{comment.text}
+        %p.name 〓コメントした人:#{comment.name}
+        %p.text #{comment.text}<br><br>

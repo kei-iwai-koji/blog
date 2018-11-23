@@ -1,0 +1,55 @@
+.article {
+  margin: 20px;
+  .article__title {
+    font-size: 22px;
+    font-weight: bold;
+  }
+  .article__text {
+    font-size: 22px;
+  }
+  .name {
+    font-size: 20px;
+    display: block;
+    text-align: right;
+    margin-right: 0;
+  }
+  .menu {
+    position: relative;
+    .edit {
+      color: #fb8c00;
+      display: inline-block;
+      position: absolute;
+      top: 0;
+      right: 50%;
+    }
+    .delete {
+      color: #fb8c00;
+      display: inline-block;
+      position: absolute;
+      top: 0;
+      left: 50%;
+    }
+  }
+}
+.container {
+  padding-top: 50px;
+  .name {
+    font-size: 15px;
+  }
+  .text {
+    font-size: 18px;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
