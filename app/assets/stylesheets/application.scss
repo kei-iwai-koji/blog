@@ -2,7 +2,17 @@
 @import "style";
 @import "index";
 @import "show";
+@import "devise";
 
 body {
   background-image: url("back.jpg");
 }
+
+.end-view {
+  padding: 50px;
+}
+
+.border {
+  border: dashed 3px #ffff00;
+}
+
