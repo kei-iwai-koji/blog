@@ -17,10 +17,13 @@
 
 .container
   / ここからフォーム
-  = form_tag("/articles/#{@article.id}/comments", method: :post) do
-    %input{:name => "name", :placeholder => "なまえ", :type => "string"}/
-    %textarea{:cols => "30", :name => "text", :placeholder => "コメントする", :rows => "2"}
-    %input{:type => "submit", :value => "喧嘩売る"}/
+  = form_with url: "/articles/#{@article.id}/comments" do |f|
+    お名前をぜひ…
+    = f.text_field :name
+    言いたいことがあれば…
+    = f.text_area :text
+    = f.submit "喧嘩売る"
+
   .comments
     %h4 コメント一蘭
     - if @comments
